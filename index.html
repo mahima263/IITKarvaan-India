@@ -171,7 +171,7 @@
         }
     
         .hero {
-            background: url('images/IIT Karvaan_Website_2.jpg') center/cover no-repeat;
+            background: url('webbanner.jpeg') center/cover no-repeat;
             color: var(--light-text);
             padding: 8rem 0;
             text-align: center;
@@ -259,13 +259,13 @@
         }
     
         .intro-content {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
     
         .intro-content p {
             font-size: clamp(1rem, 2vw, 1.2rem);
-            line-height: 1.8;
+            line-height: 1.5;
             color: var(--secondary);
         }
     
@@ -574,66 +574,25 @@
             background-color: #922f20;
             transform: translateY(-2px);
         }
-    
-        .gallery {
-            background-color: var(--light-bg);
-        }
-    
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-    
-        .gallery-item {
-            height: 250px;
-            overflow: hidden;
-            border-radius: 15px;
-            position: relative;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-    
-        .gallery-item:hover {
-            transform: scale(1.03);
-        }
-    
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-    
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-    
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-    
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-    
-        .gallery-overlay i {
-            color: var(--light-text);
-            font-size: 2.5rem;
-        }
-    
-        .simple-footer {
+        .highlight-footer {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.8;
+  margin-top: 50px;
+}
+
+.highlight-footer .highlight-excite {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #B04B34;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+          .simple-footer {
             background-color: #111;
             color: #fff;
             text-align: center;
@@ -810,6 +769,42 @@
                 padding: 8px 5px;
             }
         }
+        .register-section .register-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px; /* perfect spacing between buttons */
+  margin-top: 25px;
+}
+
+.register-section .btn {
+  background-color: #B04B34;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.register-section .btn:hover {
+  background-color: #923e2b;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 576px) {
+  .register-section .register-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .register-section .btn {
+    width: 90%;
+  }
+}
+
     </style>
 </head>
 
@@ -852,15 +847,140 @@
                 <h2>IIT Karvaan: Celebrating Alumni Connections Across Cities</h2>
             </div>
             <div class="intro-content">
-                <p>IIT Karvaan is making its way to your city, and we're thrilled to invite you to an exclusive IITK
-                    Alumni Meet! This event is a perfect opportunity to reconnect with fellow alumni, relive cherished
-                    memories from your time at IIT Kanpur, and expand your professional network. Whether you graduated
-                    recently or many years ago, IIT Karvaan celebrates the unbreakable bond that ties us all together.
-                </p>
+                <p>The journey of IIT Karvaan continues, bringing the spirit and energy of IIT Kanpur to cities across the country!</p>
+                
+                <p>Through every edition, Karvaan has kept the IITK community connected - reviving memories, friendships, and the spirit that unites us all.</p>
+                
+                <p>Join fellow alumni from across all batches to reconnect, share stories, and relive the moments that shaped your IIT Kanpur years. Hear familiar tales of halls, classrooms, and campus corners - told anew by different generations and rediscover how the IITK experience transcends time.</p>
+                
+                <p>Whether you graduated recently or decades ago, IIT Karvaan celebrates the unbreakable bond of curiosity, camaraderie, and a shared pursuit of excellence, that connects every member of the IITK family.</p>
             </div>
         </div>
     </section>
-
+   <!-- Paste this where you want the event-cards section -->
+<section class="mk-evcards-section" aria-labelledby="mk-evcards-title">
+    <style>
+      /* Scoped styles for the section (unique class prefix mk-evcards-) */
+      @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Roboto:wght@300;400&display=swap');
+  
+      .mk-evcards-section {
+        --mk-accent: #B04B34;
+        --mk-accent-dark: #8e3e2c;
+        --mk-bg: linear-gradient(180deg,#fdf7f6,#f5f5f7);
+        --mk-radius: 18px;
+        padding: 48px 20px;
+        display: flex;
+        justify-content: center;
+        background: transparent; /* override if parent has bg */
+      }
+  
+      .mk-evcards-wrap {
+        width: 100%;
+        max-width: 980px;
+        font-family: 'Roboto', sans-serif;
+      }
+  
+      .mk-evcards-heading {
+        font-family: 'Raleway', sans-serif;
+        font-size: 26px;
+        color: var(--mk-accent-dark);
+        text-align: center;
+        margin: 0 0 34px 0;
+        letter-spacing: 0.4px;
+      }
+  
+      .mk-evcards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+      }
+  
+      .mk-evcards-card {
+        background: #fff;
+        border-radius: var(--mk-radius);
+        padding: 34px 22px;
+        text-align: center;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+        transition: transform .28s ease, box-shadow .28s ease;
+        border-top: 6px solid var(--mk-accent);
+      }
+  
+      .mk-evcards-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+      }
+  
+      .mk-evcards-eyebrow {
+        display: block;
+        font-weight: 700;
+        color: var(--mk-accent);
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        letter-spacing: 0.7px;
+        font-family: 'Raleway', sans-serif;
+      }
+  
+      .mk-evcards-date {
+        font-family: 'Raleway', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 6px;
+      }
+  
+      .mk-evcards-time {
+        font-size: 14px;
+        color: #555;
+        font-weight: 500;
+      }
+  
+      .mk-evcards-tba {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: repeating-linear-gradient(-45deg, rgba(0,0,0,0.03) 0 6px, transparent 6px 12px);
+        color: #666;
+        font-weight: 700;
+        font-size: 14px;
+      }
+  
+      /* Responsive tweaks */
+      @media (max-width: 640px) {
+        .mk-evcards-heading { font-size: 22px; margin-bottom: 20px; }
+        .mk-evcards-card { padding: 22px 16px; }
+      }
+    </style>
+  
+    <div class="mk-evcards-wrap">
+      <h2 id="mk-evcards-title" class="mk-evcards-heading">Mark Your Calendars for an Unforgettable Evening:
+    </h2>
+  
+      <div class="mk-evcards-grid">
+        <!-- Hyderabad -->
+        <article class="mk-evcards-card" aria-labelledby="mk-hyd-title">
+          <div id="mk-hyd-title" class="mk-evcards-eyebrow">Hyderabad</div>
+          <div class="mk-evcards-date">November 22, 2025</div>
+          <div class="mk-evcards-time">6:30 PM onwards</div>
+        </article>
+  
+        <!-- Bengaluru -->
+        <article class="mk-evcards-card" aria-labelledby="mk-blr-title">
+          <div id="mk-blr-title" class="mk-evcards-eyebrow">Bengaluru</div>
+          <div class="mk-evcards-date">November 23, 2025</div>
+          <div class="mk-evcards-time">6:30 PM onwards</div>
+        </article>
+  
+        <!-- Mumbai (TBA) -->
+        <article class="mk-evcards-card" aria-labelledby="mk-mum-title">
+          <div id="mk-mum-title" class="mk-evcards-eyebrow">Mumbai</div>
+          <div class="mk-evcards-tba">Date: To Be Announced</div>
+        </article>
+      </div>
+    </div>
+  </section>
+  
     <!-- Cities & Dates Section -->
     <section id="cities" class="cities">
         <div class="container">
@@ -1034,8 +1154,8 @@
                             <i class="bi bi-chat-left-text-fill"></i>
                         </div>
                         <h5>Engaging Conversations</h5>
-                        <p>Hear from IIT Kanpur's leadership about the institution's exciting developments and future
-                            vision.</p>
+                        <p>Hear directly from IIT Kanpur’s leadership about the institute’s latest milestones and inspiring vision for the future.
+                        </p>
                     </div>
                 </div>
 
@@ -1046,7 +1166,8 @@
                             <i class="bi bi-people-fill"></i>
                         </div>
                         <h5>Networking Opportunities</h5>
-                        <p>Connect with alumni across industries and grow your professional network.</p>
+                        <p>Meet alumni from diverse industries, exchange ideas, and grow your professional network.
+                        </p>
                     </div>
                 </div>
 
@@ -1057,97 +1178,520 @@
                             <i class="bi bi-cup-hot-fill"></i>
                         </div>
                         <h5>Culinary Delights & Campus Nostalgia</h5>
-                        <p>Enjoy delicious food while reminiscing about your campus days.</p>
+                        <p>Savor an evening of good food, laughter, and stories that transport you right back to your IITK days.
+                        </p>
                     </div>
                 </div>
             </div>
 
             <div class="highlight-footer mt-5">
                 <p>
-                    Join us for a day filled with celebration, nostalgia, and meaningful connections. <br>
-                    Relive the essence of your alma mater and create new memories with your IITK family.
+                  Join us for an unforgettable evening of celebration, nostalgia, and heartfelt connections.  
+                  Relive the spirit of your alma mater — and create new memories with your IITK family.  
+                  <span class="highlight-excite">We can’t wait to see you there!
+                </span>
                 </p>
-            </div>
+              </div>
+              
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <div class="section-title">
-                <h2>Past Memories</h2>
+    <!-- Gallery Section -->
+<!-- Gallery Section -->
+<section id="gallery" class="gallery">
+    <div class="container">
+        <div class="section-title">
+            <h2>Past Memories</h2>
+            <div class="title-decoration"></div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/AVCN1830.JPG" alt="Past Event">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
             </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="images/AVCN1830.JPG" alt="Past Event">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+            <div class="gallery-item">
+                <img src="images/002A0376.JPG" alt="Past Event">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/002A0376.JPG" alt="Past Event">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/AVCN1592.JPG" alt="Past Event">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/AVCN1592.JPG" alt="Past Event">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/AVCN1881.JPG" alt="Past Event">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/AVCN1881.JPG" alt="Past Event">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/AVCN2016.JPG" alt="Past Event">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/AVCN2016.JPG" alt="Past Event">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/DSC_9278 (1).JPG" alt="Past Event">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/DSC_9278 (1).JPG" alt="Past Event">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/AVCN1703.JPG" alt="Past Event">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/AVCN1703.JPG" alt="Past Event">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/DSC_9272.JPG" alt="Past Event">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/DSC_9272.JPG" alt="Past Event">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="close-btn">&times;</span>
+            <div class="lightbox-nav">
+                <button class="nav-btn prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-btn next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="lightbox-image-container">
+                <img id="lightbox-img" src="" alt="Enlarged view">
+            </div>
+            <div class="lightbox-controls">
+                <button class="control-btn zoom-in">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="control-btn zoom-out">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="control-btn reset-zoom">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.gallery {
+    padding: 60px 0;
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.title-decoration {
+    height: 4px;
+    width: 80px;
+    background-color: #B04b34;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    aspect-ratio: 4/3;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(176, 75, 52, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay i {
+    color: white;
+    font-size: 2rem;
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close-btn:hover {
+    color: #B04b34;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 1001;
+}
+
+.nav-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: #B04b34;
+}
+
+.lightbox-image-container {
+    max-width: 100%;
+    max-height: 80vh;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+#lightbox-img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.lightbox-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.control-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.control-btn:hover {
+    background-color: #B04b34;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .lightbox-nav {
+        width: 90%;
+    }
+    
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .control-btn {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.close-btn');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const zoomInBtn = document.querySelector('.zoom-in');
+    const zoomOutBtn = document.querySelector('.zoom-out');
+    const resetZoomBtn = document.querySelector('.reset-zoom');
+    
+    let currentImageIndex = 0;
+    let images = [];
+    let scale = 1;
+    
+    // Collect all gallery images
+    galleryItems.forEach(item => {
+        images.push(item.querySelector('img').src);
+    });
+    
+    // Open lightbox when gallery item is clicked
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', function() {
+            currentImageIndex = index;
+            openLightbox();
+        });
+    });
+    
+    // Open lightbox function
+    function openLightbox() {
+        lightbox.classList.add('active');
+        lightboxImg.src = images[currentImageIndex];
+        resetZoom();
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+    
+    // Close lightbox
+    closeBtn.addEventListener('click', function() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    });
+    
+    // Close lightbox when clicking outside the image
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    });
+    
+    // Navigate to previous image
+    prevBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        lightboxImg.src = images[currentImageIndex];
+        resetZoom();
+    });
+    
+    // Navigate to next image
+    nextBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        lightboxImg.src = images[currentImageIndex];
+        resetZoom();
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        } else if (e.key === 'ArrowLeft') {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            lightboxImg.src = images[currentImageIndex];
+            resetZoom();
+        } else if (e.key === 'ArrowRight') {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            lightboxImg.src = images[currentImageIndex];
+            resetZoom();
+        }
+    });
+    
+    // Zoom functionality
+    zoomInBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        scale += 0.2;
+        lightboxImg.style.transform = `scale(${scale})`;
+    });
+    
+    zoomOutBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (scale > 0.4) {
+            scale -= 0.2;
+            lightboxImg.style.transform = `scale(${scale})`;
+        }
+    });
+    
+    resetZoomBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        resetZoom();
+    });
+    
+    function resetZoom() {
+        scale = 1;
+        lightboxImg.style.transform = `scale(${scale})`;
+    }
+    
+    // Touch gestures for mobile
+    let startX = 0;
+    let startY = 0;
+    
+    lightboxImg.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    });
+    
+    lightboxImg.addEventListener('touchend', function(e) {
+        if (!startX || !startY) return;
+        
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        
+        const diffX = startX - endX;
+        const diffY = startY - endY;
+        
+        // If horizontal swipe is more significant than vertical swipe
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            if (diffX > 50) {
+                // Swipe left - next image
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                lightboxImg.src = images[currentImageIndex];
+                resetZoom();
+            } else if (diffX < -50) {
+                // Swipe right - previous image
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                lightboxImg.src = images[currentImageIndex];
+                resetZoom();
+            }
+        }
+        
+        startX = 0;
+        startY = 0;
+    });
+});
+</script>
 
     <!-- Register Section -->
-    <section id="register" class="intro">
-        <div class="container">
-            <div class="section-title">
-                <h2>Register Now</h2>
-            </div>
-            <div class="intro-content text-center">
-                <p>Don't miss this opportunity to reconnect with your IIT Kanpur family. Register now for the IIT
-                    Karvaan event in your city.</p>
-                <div class="mt-4">
-                    <a href="https://forms.zohopublic.in/iitkanpurdf1/form/IITKarvaanIndiaHyderabad/formperma/-QYwF-4h0xNLi6b8V9v-bSQA29y5EA3d_5LdNBsERto"
-                        class="btn" target="_blank">Register for Hyderabad</a>
-                    <a href="https://forms.zohopublic.in/iitkanpurdf1/form/IITKarvaanIndiaBangalore/formperma/3AMnCTeJe_b4eIrUZ-AAM-IaHBttANsqAQspL-NcNcg"
-                        class="btn" target="_blank" style="margin-left: 15px;">Register for Bengaluru</a>
-                </div>
-            </div>
+    <!-- Register Section -->
+<section id="register" class="intro register-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Register Now</h2>
+      </div>
+      <div class="intro-content text-center">
+        <p>
+          Don't miss this opportunity to reconnect with your IIT Kanpur family. 
+          Register now for the IIT Karvaan event in your city.
+        </p>
+        <div class="register-buttons">
+          <a href="https://forms.zohopublic.in/iitkanpurdf1/form/IITKarvaanIndiaHyderabad/formperma/-QYwF-4h0xNLi6b8V9v-bSQA29y5EA3d_5LdNBsERto" 
+             class="btn" target="_blank">Register for Hyderabad</a>
+          <a href="https://forms.zohopublic.in/iitkanpurdf1/form/IITKarvaanIndiaBangalore/formperma/3AMnCTeJe_b4eIrUZ-AAM-IaHBttANsqAQspL-NcNcg" 
+             class="btn" target="_blank">Register for Bengaluru</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+  
 
     <!-- Footer -->
     <footer class="simple-footer">
