@@ -1,17 +1,818 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IITKarvaan India 2025 - Alumni Connect Initiative</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+    
+        :root {
+            --primary: #B04B34;
+            --primary-dark: #8f3c28;
+            --primary-light: #d67c65;
+            --secondary: #1B2730;
+            --light-bg: #f8f9fa;
+            --dark-text: #333;
+            --light-text: #fff;
+            --accent: #F39C12;
+        }
+    
+        html {
+            scroll-behavior: smooth;
+        }
+    
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+    
+        /* Body scroll lock when menu is open */
+        body.menu-open {
+            overflow: hidden;
+        }
+    
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--secondary);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+    
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+    
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+    
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+    
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+            max-width: 100%;
+        }
+    
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+    
+        .logo-text p {
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+    
+        nav {
+            position: relative;
+        }
+    
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
+            z-index: 101;
+        }
+    
+        .menu-close {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
+            z-index: 102;
+        }
+    
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+    
+        nav ul.show {
+            display: flex !important;
+            transform: translateX(0) !important;
+        }
+    
+        nav ul li {
+            margin-left: 25px;
+        }
+    
+        nav ul li a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+    
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+    
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+    
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+    
+        .hero {
+            background: url('images/IIT Karvaan_Website_2.jpg') center/cover no-repeat;
+            color: var(--light-text);
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+    
+        .hero h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+    
+        .date-venue {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin: 1.5rem 0;
+            font-weight: 600;
+            color: var(--accent);
+        }
+    
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--light-text);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(176, 75, 52, 0.3);
+        }
+    
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(176, 75, 52, 0.4);
+        }
+    
+        section {
+            padding: 4rem 0;
+        }
+    
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+    
+        .section-title h2 {
+            font-size: clamp(1.8rem, 4vw, 2rem);
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+    
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 25%;
+            border-radius: 2px;
+        }
+    
+        .intro {
+            background-color: #FFF7F6;
+            text-align: center;
+        }
+    
+        .intro-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    
+        .intro-content p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.8;
+            color: var(--secondary);
+        }
+    
+        .cities {
+            background-color: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .cities::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/AVCN1830.JPG') center/cover fixed no-repeat;
+            opacity: 0.03;
+            z-index: 0;
+        }
+    
+        .cities-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+    
+        .city-tab {
+            padding: 15px 30px;
+            background-color: #fff;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--secondary);
+            margin: 0 5px 10px;
+            border-radius: 5px 5px 0 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        .city-tab.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+            background-color: #fff;
+        }
+    
+        .city-tab:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+    
+        .city-content {
+            display: none;
+            position: relative;
+            z-index: 2;
+        }
+    
+        .city-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+    
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+    
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        .city-card {
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+    
+        .city-card:hover {
+            transform: translateY(-10px);
+        }
+    
+        .city-header {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--light-text);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .city-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            opacity: 0.1;
+        }
+    
+        .city-header h3 {
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+    
+        .city-header .date {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: #ffffff;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            font-weight: 600;
+        }
+    
+        .city-header .location {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            position: relative;
+            z-index: 2;
+        }
+    
+        .city-details {
+            padding: 30px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+    
+        .city-agenda {
+            flex: 1;
+            min-width: 100%;
+        }
+    
+        .city-agenda h4 {
+            color: var(--secondary);
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+    
+        .agenda-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+    
+        .agenda-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+        }
+    
+        .agenda-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    
+        .agenda-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    
+        .agenda-table tr:hover {
+            background-color: #f1f1f1;
+        }
+    
+        .city-map {
+            flex: 1;
+            min-width: 100%;
+        }
+    
+        .city-map h4 {
+            color: var(--secondary);
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+    
+        .map-container {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+    
+        .map-container:hover {
+            transform: scale(1.02);
+        }
+    
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    
+        .event-highlights {
+            background-color: #FFF7F6;
+            font-family: 'Roboto', sans-serif;
+        }
+    
+        .section-heading {
+            color: #B04B34;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        }
+    
+        .underline {
+            width: 80px;
+            height: 4px;
+            background-color: #B04B34;
+            border-radius: 2px;
+            margin: 0 auto 30px;
+        }
+    
+        .highlight-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            margin-bottom: 20px;
+        }
+    
+        .highlight-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(176, 75, 52, 0.25);
+            background: linear-gradient(145deg, #fff, #fff0ed);
+        }
+    
+        .highlight-card .icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #B04B34, #d35b45);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: #fff;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+    
+        .highlight-card:hover .icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+    
+        .highlight-card h5 {
+            font-family: 'Raleway', sans-serif;
+            color: #B04B34;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+    
+        .highlight-card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+    
+        .highlight-footer p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #444;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+    
+        .city-cta {
+            text-align: center;
+            margin-top: 30px;
+        }
+    
+        .register-btn {
+            display: inline-block;
+            background-color: #b04b34;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+    
+        .register-btn:hover {
+            background-color: #922f20;
+            transform: translateY(-2px);
+        }
+    
+        .gallery {
+            background-color: var(--light-bg);
+        }
+    
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+    
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+    
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+    
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+    
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+    
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+    
+        .gallery-overlay i {
+            color: var(--light-text);
+            font-size: 2.5rem;
+        }
+    
+        .simple-footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+    
+        .footer-social {
+            margin-bottom: 10px;
+        }
+    
+        .footer-social a {
+            color: #fff;
+            font-size: 20px;
+            margin: 0 12px;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+    
+        .footer-social a:hover {
+            color: #B04B34;
+        }
+    
+        .footer-copy p {
+            font-size: 14px;
+            margin: 0;
+            color: #ccc;
+        }
+    
+        /* Mobile Navigation Styles */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            .menu-close {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 60px 20px 20px;
+                box-shadow: none;
+                border-radius: 0;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 100;
+            }
+            
+            nav ul.show {
+                display: flex !important;
+                transform: translateX(0) !important;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 10px 20px;
+                display: block;
+                color: var(--secondary);
+            }
+            
+            .header-content {
+                justify-content: space-between;
+            }
+        }
+    
+        /* Responsive Styles */
+        @media (min-width: 576px) {
+            .footer-logo,
+            .footer-links {
+                min-width: 50%;
+            }
+    
+            .city-agenda,
+            .city-map {
+                min-width: 100%;
+            }
+        }
+    
+        @media (min-width: 768px) {
+            .city-agenda,
+            .city-map {
+                min-width: calc(50% - 15px);
+            }
+    
+            .footer-logo,
+            .footer-links {
+                min-width: 33.33%;
+                text-align: left;
+            }
+    
+            .footer-links h4:after {
+                left: 0;
+                transform: none;
+            }
+    
+            .hero-content {
+                padding: 0;
+            }
+    
+            .city-header {
+                padding: 40px 30px;
+            }
+    
+            .city-details {
+                padding: 40px;
+            }
+        }
+    
+        @media (min-width: 992px) {
+            .city-details {
+                flex-wrap: nowrap;
+            }
+    
+            .city-agenda,
+            .city-map {
+                min-width: calc(50% - 20px);
+            }
+    
+            .footer-logo {
+                min-width: 30%;
+            }
+    
+            .footer-links {
+                min-width: 20%;
+            }
+        }
+    
+        @media (max-width: 576px) {
+            .cities-tabs {
+                flex-direction: column;
+                width: 100%;
+            }
+    
+            .city-tab {
+                width: 100%;
+                margin: 5px 0;
+                border-radius: 5px;
+            }
+    
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+    
+            .highlight-card {
+                padding: 1.5rem 1rem;
+            }
+    
+            .highlight-card .icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+    
+            .agenda-table {
+                font-size: 0.8rem;
+            }
+    
+            .agenda-table th,
+            .agenda-table td {
+                padding: 8px 5px;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -19,11 +820,15 @@
             <div class="header-content">
                 <div class="logo">
                     <img src="images/IITKarvaann logo.png" alt="IIT Kanpur Logo">
-                   
                 </div>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <nav>
                     <ul>
-                        <li><a href="#cities">Cities & Dates</a></li>
+                        <li><a href="#cities" class="city-link" data-city="hyderabad">Hyderabad</a></li>
+                        <li><a href="#cities" class="city-link" data-city="bangalore">Bengaluru</a></li>
+
                         <li><a href="#highlights">Highlights</a></li>
                         <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#register">Register</a></li>
@@ -36,7 +841,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-           
+
         </div>
     </section>
 
@@ -44,11 +849,14 @@
     <section class="intro">
         <div class="container">
             <div class="section-title">
-                <h2>IIT Karvaan: Celebrating Alumni Connections Across Cities
-                </h2>
+                <h2>IIT Karvaan: Celebrating Alumni Connections Across Cities</h2>
             </div>
             <div class="intro-content">
-                <p>IIT Karvaan is making its way to your city, and we’re thrilled to invite you to an exclusive IITK Alumni Meet! This event is a perfect opportunity to reconnect with fellow alumni, relive cherished memories from your time at IIT Kanpur, and expand your professional network. Whether you graduated recently or many years ago, IIT Karvaan celebrates the unbreakable bond that ties us all together.</p>
+                <p>IIT Karvaan is making its way to your city, and we're thrilled to invite you to an exclusive IITK
+                    Alumni Meet! This event is a perfect opportunity to reconnect with fellow alumni, relive cherished
+                    memories from your time at IIT Kanpur, and expand your professional network. Whether you graduated
+                    recently or many years ago, IIT Karvaan celebrates the unbreakable bond that ties us all together.
+                </p>
             </div>
         </div>
     </section>
@@ -59,12 +867,12 @@
             <div class="section-title">
                 <h2>Cities & Dates</h2>
             </div>
-            
+
             <div class="cities-tabs">
                 <button class="city-tab active" data-city="hyderabad">Hyderabad</button>
                 <button class="city-tab" data-city="bangalore">Bengaluru</button>
             </div>
-            
+
             <!-- Hyderabad -->
             <div class="city-content active" id="hyderabad-content">
                 <div class="city-card">
@@ -121,13 +929,24 @@
                         <div class="city-map">
                             <h4>Venue Location</h4>
                             <div class="map-container">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.454067024914!2d78.4316143148772!3d17.40685208808783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9726a9f34d37%3A0x483121d2c386b21!2sPark%20Hyatt%20Hyderabad!5e0!3m2!1sen!2sin!4v1652093783948!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.454067024914!2d78.4316143148772!3d17.40685208808783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9726a9f34d37%3A0x483121d2c386b21!2sPark%20Hyatt%20Hyderabad!5e0!3m2!1sen!2sin!4v1652093783948!5m2!1sen!2sin"
+                                    allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                            <div class="city-cta">
+                                <a href="https://forms.zohopublic.in/iitkanpurdf1/form/IITKarvaanIndiaHyderabad/formperma/-QYwF-4h0xNLi6b8V9v-bSQA29y5EA3d_5LdNBsERto"
+                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade" class="register-btn">Register for
+                                    Hyderabad Event</a>
                             </div>
                         </div>
+
                     </div>
+
+
                 </div>
             </div>
-            
+
             <!-- Bangalore -->
             <div class="city-content" id="bangalore-content">
                 <div class="city-card">
@@ -184,71 +1003,73 @@
                         <div class="city-map">
                             <h4>Venue Location</h4>
                             <div class="map-container">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.646036507849!2d77.60931451482145!3d12.966299990882785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae144e5c0c2f0f%3A0xea9440725c841150!2sITC%20Gardenia!5e0!3m2!1sen!2sin!4v1652093720571!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3887.9885969964635!2d77.595199!3d12.972581000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDU4JzIxLjMiTiA3N8KwMzUnNDIuNyJF!5e0!3m2!1sen!2sin!4v1762254225974!5m2!1sen!2sin"
+                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <div class="city-cta">
+                                <a href="https://forms.zohopublic.in/iitkanpurdf1/form/IITKarvaanIndiaBangalore/formperma/3AMnCTeJe_b4eIrUZ-AAM-IaHBttANsqAQspL-NcNcg"
+                                    class="register-btn">Register for Bengaluru Event</a>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Event Highlights Section -->
+    <section id="highlights" class="event-highlights py-5">
+        <div class="container text-center">
+            <h2 class="section-heading mb-3">Event Highlights</h2>
+            <div class="underline mx-auto mb-5"></div>
 
-   
-<!-- EVENT HIGHLIGHTS SECTION -->
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-4">
+                    <div class="highlight-card">
+                        <div class="icon">
+                            <i class="bi bi-chat-left-text-fill"></i>
+                        </div>
+                        <h5>Engaging Conversations</h5>
+                        <p>Hear from IIT Kanpur's leadership about the institution's exciting developments and future
+                            vision.</p>
+                    </div>
+                </div>
 
-<section class="event-highlights py-5">
-    <div class="container text-center">
-      <h2 class="section-heading mb-3">Event Highlights</h2>
-      <div class="underline mx-auto mb-5"></div>
-  
-      <div class="row g-4">
-        <!-- Card 1 -->
-        <div class="col-md-4">
-          <div class="highlight-card">
-            <div class="icon">
-              <i class="bi bi-chat-left-text-fill"></i>
-            </div>
-            <h5>Engaging Conversations</h5>
-            <p>Hear from IIT Kanpur’s leadership about the institution’s exciting developments and future vision.</p>
-          </div>
-        </div>
-  
-        <!-- Card 2 -->
-        <div class="col-md-4">
-          <div class="highlight-card">
-            <div class="icon">
-              <i class="bi bi-people-fill"></i>
-            </div>
-            <h5>Networking Opportunities</h5>
-            <p>Connect with alumni across industries and grow your professional network.</p>
-          </div>
-        </div>
-  
-        <!-- Card 3 -->
-        <div class="col-md-4">
-          <div class="highlight-card">
-            <div class="icon">
-              <i class="bi bi-cup-hot-fill"></i>
-            </div>
-            <h5>Culinary Delights & Campus Nostalgia</h5>
-            <p>Enjoy delicious food while reminiscing about your campus days.</p>
-          </div>
-        </div>
-      </div>
-  
-      <div class="highlight-footer mt-5">
-        <p>
-          Join us for a day filled with celebration, nostalgia, and meaningful connections. <br>
-          Relive the essence of your alma mater and create new memories with your IITK family.
-        </p>
-      </div>
-    </div>
-  </section>
-  
-  
-  
+                <!-- Card 2 -->
+                <div class="col-md-4">
+                    <div class="highlight-card">
+                        <div class="icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h5>Networking Opportunities</h5>
+                        <p>Connect with alumni across industries and grow your professional network.</p>
+                    </div>
+                </div>
 
+                <!-- Card 3 -->
+                <div class="col-md-4">
+                    <div class="highlight-card">
+                        <div class="icon">
+                            <i class="bi bi-cup-hot-fill"></i>
+                        </div>
+                        <h5>Culinary Delights & Campus Nostalgia</h5>
+                        <p>Enjoy delicious food while reminiscing about your campus days.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-footer mt-5">
+                <p>
+                    Join us for a day filled with celebration, nostalgia, and meaningful connections. <br>
+                    Relive the essence of your alma mater and create new memories with your IITK family.
+                </p>
+            </div>
+        </div>
+    </section>
 
     <!-- Gallery Section -->
     <section id="gallery" class="gallery">
@@ -258,37 +1079,49 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Past Event">
+                    <img src="images/AVCN1830.JPG" alt="Past Event">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Past Event">
+                    <img src="images/002A0376.JPG" alt="Past Event">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Past Event">
+                    <img src="images/AVCN1592.JPG" alt="Past Event">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Past Event">
+                    <img src="images/AVCN1881.JPG" alt="Past Event">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Past Event">
+                    <img src="images/AVCN2016.JPG" alt="Past Event">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Past Event">
+                    <img src="images/DSC_9278 (1).JPG" alt="Past Event">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/AVCN1703.JPG" alt="Past Event">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/DSC_9272.JPG" alt="Past Event">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
@@ -297,79 +1130,165 @@
         </div>
     </section>
 
- 
-
-
-  
-
-    <!-- Footer -->
-    <footer>
+    <!-- Register Section -->
+    <section id="register" class="intro">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>IITKarvaan India</h3>
-                    <p>Traveling Alumni Connect Initiative</p>
-                    <p>Office of Alumni Affairs and Resource Development</p>
-                    <p>Indian Institute of Technology Kanpur</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#cities">Cities & Dates</a></li>
-                        <li><a href="#highlights">Highlights</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#register">Register</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Contact Us</h4>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i> karvaan@iitk.ac.in</li>
-                        <li><i class="fas fa-phone"></i> +91 512 259 0150</li>
-                        <li><i class="fas fa-map-marker-alt"></i> IIT Kanpur, UP 208016</li>
-                    </ul>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+            <div class="section-title">
+                <h2>Register Now</h2>
+            </div>
+            <div class="intro-content text-center">
+                <p>Don't miss this opportunity to reconnect with your IIT Kanpur family. Register now for the IIT
+                    Karvaan event in your city.</p>
+                <div class="mt-4">
+                    <a href="https://forms.zohopublic.in/iitkanpurdf1/form/IITKarvaanIndiaHyderabad/formperma/-QYwF-4h0xNLi6b8V9v-bSQA29y5EA3d_5LdNBsERto"
+                        class="btn" target="_blank">Register for Hyderabad</a>
+                    <a href="https://forms.zohopublic.in/iitkanpurdf1/form/IITKarvaanIndiaBangalore/formperma/3AMnCTeJe_b4eIrUZ-AAM-IaHBttANsqAQspL-NcNcg"
+                        class="btn" target="_blank" style="margin-left: 15px;">Register for Bengaluru</a>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 IITKarvaan India - IIT Kanpur. All Rights Reserved.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="simple-footer">
+        <div class="container">
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/dean-of-resources-and-alumni-iit-kanpur-32a377198/" target="_blank"
+                    rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.facebook.com/iitkanpur/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.youtube.com/@iitkanpur" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://x.com/DoRA_IITK" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+
+            <div class="footer-copy">
+                <p>© Copyright IIT Kanpur. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+
+  
+    
     <script>
         // Tab functionality for cities
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const tabs = document.querySelectorAll('.city-tab');
             const contents = document.querySelectorAll('.city-content');
-            
+            const body = document.body;
+    
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     // Remove active class from all tabs and contents
                     tabs.forEach(t => t.classList.remove('active'));
                     contents.forEach(c => c.classList.remove('active'));
-                    
+    
                     // Add active class to clicked tab
                     tab.classList.add('active');
-                    
+    
                     // Show corresponding content
                     const cityId = tab.getAttribute('data-city');
                     document.getElementById(`${cityId}-content`).classList.add('active');
                 });
             });
-            
+    
+            // Navigation links ko city tabs se connect karna
+            document.querySelectorAll('.city-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Mobile menu close karo agar open hai
+                    closeMobileMenu();
+                    
+                    // Cities section par scroll karo
+                    document.getElementById('cities').scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Thoda delay ke baad tab activate karo
+                    setTimeout(() => {
+                        const cityId = link.getAttribute('data-city');
+                        
+                        // Remove active class from all tabs and contents
+                        document.querySelectorAll('.city-tab').forEach(t => t.classList.remove('active'));
+                        document.querySelectorAll('.city-content').forEach(c => c.classList.remove('active'));
+                        
+                        // Add active class to corresponding tab and content
+                        document.querySelector(`.city-tab[data-city="${cityId}"]`).classList.add('active');
+                        document.getElementById(`${cityId}-content`).classList.add('active');
+                    }, 500);
+                });
+            });
+    
+            // Mobile navigation elements
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('nav ul');
+            const menuClose = document.querySelector('.menu-close');
+    
+            // Mobile menu open function
+            function openMobileMenu() {
+                navMenu.classList.add('show');
+                body.classList.add('menu-open');
+                // Hamburger icon ko cross me change karo
+                navToggle.innerHTML = '<i class="fas fa-times"></i>';
+            }
+    
+            // Mobile menu close function
+            function closeMobileMenu() {
+                navMenu.classList.remove('show');
+                body.classList.remove('menu-open');
+                // Cross icon ko hamburger me change karo
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+    
+            // Hamburger toggle
+            navToggle.addEventListener('click', () => {
+                if (navMenu.classList.contains('show')) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
+            });
+    
+            // Close button
+            menuClose.addEventListener('click', closeMobileMenu);
+    
+            // Close menu when clicking on links
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMobileMenu();
+                });
+            });
+    
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (navMenu.classList.contains('show') && 
+                    !navMenu.contains(e.target) && 
+                    !navToggle.contains(e.target) &&
+                    !menuClose.contains(e.target)) {
+                    closeMobileMenu();
+                }
+            });
+    
+            // Escape key se close karo
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navMenu.classList.contains('show')) {
+                    closeMobileMenu();
+                }
+            });
+    
             // Add subtle animations to elements as they come into view
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
                 threshold: 0.1
             };
-            
+    
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -377,11 +1296,12 @@
                     }
                 });
             }, observerOptions);
-            
-            document.querySelectorAll('.highlight-card, .gallery-item, .stat-item').forEach(item => {
+    
+            document.querySelectorAll('.highlight-card, .gallery-item, .city-card').forEach(item => {
                 observer.observe(item);
             });
         });
     </script>
 </body>
+
 </html>

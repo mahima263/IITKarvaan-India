@@ -468,7 +468,27 @@ section {
   }  
 
 
-
+  .city-cta {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .register-btn {
+    display: inline-block;
+    background-color: #b04b34;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .register-btn:hover {
+    background-color: #922f20;
+    transform: translateY(-2px);
+  }
+  
 
 .gallery {
     background-color: var(--light-bg);
