@@ -19,7 +19,10 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-    
+        html, body {
+    overflow-x: hidden;
+}
+
         :root {
             --primary: #B04B34;
             --primary-dark: #8f3c28;
@@ -170,8 +173,8 @@
             width: 100%;
         }
     
+        /* Responsive Hero Section */
         .hero {
-            background: url('webbanner.jpeg') center/cover no-repeat;
             color: var(--light-text);
             padding: 8rem 0;
             text-align: center;
@@ -180,20 +183,46 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
-    
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
-            padding: 0 20px;
         }
-    
-        .hero h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        
+        /* Desktop banner (default) */
+        .hero {
+            background: url('webbanner.jpeg') center/cover no-repeat;
+        }
+        
+        /* Mobile banner */
+        @media (max-width: 768px) {
+            .hero {
+                background: url('mobilebanner.jpeg') center/cover no-repeat !important;
+                min-height: 100vh;
+                padding: 6rem 0;
+                padding-top: 10rem; 
+
+            }
+        }
+        
+        /* Small mobile view */
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 80vh;
+                padding: 4rem 0;
+            }
         }
     
         .date-venue {
@@ -835,8 +864,8 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-
+        <div class="container hero-content">
+            <!-- Hero content can go here if needed -->
         </div>
     </section>
 
@@ -1154,7 +1183,7 @@
                             <i class="bi bi-chat-left-text-fill"></i>
                         </div>
                         <h5>Engaging Conversations</h5>
-                        <p>Hear directly from IIT Kanpur’s leadership about the institute’s latest milestones and inspiring vision for the future.
+                        <p>Hear directly from IIT Kanpur's leadership about the institute's latest milestones and inspiring vision for the future.
                         </p>
                     </div>
                 </div>
@@ -1188,7 +1217,7 @@
                 <p>
                   Join us for an unforgettable evening of celebration, nostalgia, and heartfelt connections.  
                   Relive the spirit of your alma mater — and create new memories with your IITK family.  
-                  <span class="highlight-excite">We can’t wait to see you there!
+                  <span class="highlight-excite">We can't wait to see you there!
                 </span>
                 </p>
               </div>
@@ -1695,6 +1724,14 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- Footer -->
     <footer class="simple-footer">
         <div class="container">
+            <!-- Contact Email Section -->
+            <div class="footer-contact">
+                <p class="footer-contact-text">For more information contact:</p>
+                <a href="mailto:dora_desk@iitk.ac.in" class="footer-email">
+                    dora_desk@iitk.ac.in
+                </a>
+            </div>
+    
             <div class="footer-social">
                 <a href="https://www.linkedin.com/in/dean-of-resources-and-alumni-iit-kanpur-32a377198/" target="_blank"
                     rel="noopener noreferrer">
@@ -1710,12 +1747,38 @@ document.addEventListener('DOMContentLoaded', function() {
                     <i class="fab fa-twitter"></i>
                 </a>
             </div>
-
+    
             <div class="footer-copy">
                 <p>© Copyright IIT Kanpur. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
+    
+    <style>
+    .footer-contact {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .footer-contact-text {
+        color: #fff;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+    
+    .footer-email {
+        color: #B04B34;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+    }
+    
+    .footer-email:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
+    </style>
 
 
   
